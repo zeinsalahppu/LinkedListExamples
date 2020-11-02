@@ -21,7 +21,7 @@ class DoublyLinkedList
     struct Node
     {
       int  value;
-      Node *next;
+      Node *next, *prev;
     };
 
     typedef Node *NodePTR;
