@@ -46,7 +46,10 @@ void DoublyLinkedList::addAtBeginning(int n)
 {
   NodePTR x = new Node;
   x->value = n;
+  x->prev = NULL;
   x->next = m_Head;
+  if (m_Head != NULL)
+    m_Head->prev = x;
   m_Head = x;
 }
 
@@ -66,6 +69,7 @@ void DoublyLinkedList::addAtEnd(int n)
       t = t->next;
 
     t->next = x;
+    x->prev = t;
   }
 }
 
@@ -106,7 +110,10 @@ void DoublyLinkedList::insertIntoSortedList(int val)
 
   if (m_Head == NULL || val <= m_Head->value) // add before head
   {
+    x->prev = NULL;
     x->next = m_Head;
+    if (m_Head != NULL)
+      m_Head->prev = x;
     m_Head = x;
   }
   else  // insert at the correct position after head
@@ -116,7 +123,10 @@ void DoublyLinkedList::insertIntoSortedList(int val)
       t = t->next;
 
     x->next = t->next;
+    x->prev = t;
     t->next = x;
+    if (x->next != NULL)
+      x->next->prev = x;
   }
 }
 
@@ -171,6 +181,7 @@ void main()
   list.addAtEnd(18);
 
   list.printOut();
+  cout << "\n" << list.getSize() << "\n";
 
   cout << "Sorted: " << list.isSorted() << "\n";
 
