@@ -5,18 +5,26 @@ using namespace std;
 
 class SinglyLinkedList
 {
-public:
-  SinglyLinkedList();
-  ~SinglyLinkedList();
+  public:
+    SinglyLinkedList();
+    ~SinglyLinkedList();
 
-private:
-  struct Node
-  {
-    int  value;
-    Node *next;
-  };
+    void addAtBeginning(int n);
+    void addAtEnd(int n);
+    void insertIntoSortedList(int n);
+    void readAndCreate(bool sorted = false);
+    void printOut();
+    bool isSorted();
+    int getSize();
 
-  typedef Node *NodePTR;
+  private:
+    struct Node
+    {
+      int  value;
+      Node *next;
+    };
+
+    typedef Node *NodePTR;
 
   NodePTR m_Head;
 };
