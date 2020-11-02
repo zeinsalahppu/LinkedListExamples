@@ -82,6 +82,80 @@ void SinglyLinkedList::printOut()
 }
 
 
+void SinglyLinkedList::readAndCreate(bool sorted)
+{
+  int val;
+
+  cin >> val;
+  while (val != 0)
+  {
+    if (sorted)
+      insertIntoSortedList(val);
+    else
+      addAtEnd(val);
+
+    cin >> val;
+  }
+}
+
+
+void SinglyLinkedList::insertIntoSortedList(int val)
+{
+  NodePTR x = new Node;
+  x->value = val;
+
+  if (m_Head == NULL || val <= m_Head->value) // add before head
+  {
+    x->next = m_Head;
+    m_Head = x;
+  }
+  else  // insert at the correct position after head
+  {
+    NodePTR t = m_Head;
+    while ((t->next != NULL) && (t->next->value <= val))
+      t = t->next;
+
+    x->next = t->next;
+    t->next = x;
+  }
+}
+
+
+int SinglyLinkedList::getSize()
+{
+  int i = 0;
+  NodePTR x = m_Head;
+  while (x != NULL)
+  {
+    x = x->next;
+    i++;
+  }
+  return i;
+}
+
+
+bool SinglyLinkedList::isSorted()
+{
+  if (m_Head == NULL)
+    return true;
+  else
+  {
+    NodePTR a = m_Head;
+    NodePTR b = m_Head->next;
+    while (b != NULL && b->value >= a->value)
+    {
+      a = a->next;
+      b = b->next;
+    }
+
+    if (b == NULL)
+      return true;
+    else
+      return false;
+  }
+}
+
+
 void main()
 {
   cout << "Hello! This is an example program for studying linked lists" << endl;
@@ -98,6 +172,17 @@ void main()
 
   list.printOut();
 
+  cout << "Sorted: " << list.isSorted() << "\n";
+
+  SinglyLinkedList list2;
+
+  list2.readAndCreate(true);
+  list2.printOut();
+  cout << "\n" << list2.getSize() << "\n";
+  cout << "Sorted: " << list2.isSorted() << "\n";
+
+
+  
   system("PAUSE");
 }
 
