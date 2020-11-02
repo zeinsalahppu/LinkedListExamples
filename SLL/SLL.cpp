@@ -171,6 +171,7 @@ void main()
   list.addAtEnd(18);
 
   list.printOut();
+  cout << "\n" << list.getSize() << "\n";
 
   cout << "Sorted: " << list.isSorted() << "\n";
 
