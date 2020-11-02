@@ -3,11 +3,11 @@
 using namespace std;
 
 
-class SinglyLinkedList
+class DoublyLinkedList
 {
   public:
-    SinglyLinkedList();
-    ~SinglyLinkedList();
+    DoublyLinkedList();
+    ~DoublyLinkedList();
 
     void addAtBeginning(int n);
     void addAtEnd(int n);
@@ -30,19 +30,19 @@ class SinglyLinkedList
 };
 
 
-SinglyLinkedList::SinglyLinkedList()
+DoublyLinkedList::DoublyLinkedList()
 {
   m_Head = NULL;
 }
 
 
-SinglyLinkedList::~SinglyLinkedList()
+DoublyLinkedList::~DoublyLinkedList()
 {
 
 }
 
 
-void SinglyLinkedList::addAtBeginning(int n)
+void DoublyLinkedList::addAtBeginning(int n)
 {
   NodePTR x = new Node;
   x->value = n;
@@ -51,7 +51,7 @@ void SinglyLinkedList::addAtBeginning(int n)
 }
 
 
-void SinglyLinkedList::addAtEnd(int n)
+void DoublyLinkedList::addAtEnd(int n)
 {
   NodePTR x = new Node;
   x->value = n;
@@ -70,7 +70,7 @@ void SinglyLinkedList::addAtEnd(int n)
 }
 
 
-void SinglyLinkedList::printOut()
+void DoublyLinkedList::printOut()
 {
   NodePTR x = m_Head;
   cout << "\n";
@@ -82,7 +82,7 @@ void SinglyLinkedList::printOut()
 }
 
 
-void SinglyLinkedList::readAndCreate(bool sorted)
+void DoublyLinkedList::readAndCreate(bool sorted)
 {
   int val;
 
@@ -99,7 +99,7 @@ void SinglyLinkedList::readAndCreate(bool sorted)
 }
 
 
-void SinglyLinkedList::insertIntoSortedList(int val)
+void DoublyLinkedList::insertIntoSortedList(int val)
 {
   NodePTR x = new Node;
   x->value = val;
@@ -121,7 +121,7 @@ void SinglyLinkedList::insertIntoSortedList(int val)
 }
 
 
-int SinglyLinkedList::getSize()
+int DoublyLinkedList::getSize()
 {
   int i = 0;
   NodePTR x = m_Head;
@@ -134,7 +134,7 @@ int SinglyLinkedList::getSize()
 }
 
 
-bool SinglyLinkedList::isSorted()
+bool DoublyLinkedList::isSorted()
 {
   if (m_Head == NULL)
     return true;
@@ -159,7 +159,7 @@ bool SinglyLinkedList::isSorted()
 void main()
 {
   cout << "Hello! This is an example program for studying linked lists" << endl;
-  SinglyLinkedList list;
+  DoublyLinkedList list;
 
   list.addAtBeginning(5);
   list.addAtBeginning(8);
@@ -174,14 +174,12 @@ void main()
 
   cout << "Sorted: " << list.isSorted() << "\n";
 
-  SinglyLinkedList list2;
+  DoublyLinkedList list2;
 
   list2.readAndCreate(true);
   list2.printOut();
   cout << "\n" << list2.getSize() << "\n";
   cout << "Sorted: " << list2.isSorted() << "\n";
-
-
   
   system("PAUSE");
 }
