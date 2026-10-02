@@ -32,7 +32,7 @@ class DoublyLinkedList
 
 DoublyLinkedList::DoublyLinkedList()
 {
-  m_Head = NULL;
+  m_Head = nullptr;
 }
 
 
@@ -46,9 +46,9 @@ void DoublyLinkedList::addAtBeginning(int n)
 {
   NodePTR x = new Node;
   x->value = n;
-  x->prev = NULL;
+  x->prev = nullptr;
   x->next = m_Head;
-  if (m_Head != NULL)
+  if (m_Head != nullptr)
     m_Head->prev = x;
   m_Head = x;
 }
@@ -58,14 +58,14 @@ void DoublyLinkedList::addAtEnd(int n)
 {
   NodePTR x = new Node;
   x->value = n;
-  x->next = NULL;
+  x->next = nullptr;
 
-  if (m_Head == NULL)
+  if (m_Head == nullptr)
     m_Head = x;
   else
   {
     NodePTR t = m_Head;
-    while (t->next != NULL)
+    while (t->next != nullptr)
       t = t->next;
 
     t->next = x;
@@ -78,7 +78,7 @@ void DoublyLinkedList::printOut()
 {
   NodePTR x = m_Head;
   cout << "\n";
-  while (x != NULL)
+  while (x != nullptr)
   {
     cout << x->value << "  ";
     x = x->next;
@@ -108,24 +108,24 @@ void DoublyLinkedList::insertIntoSortedList(int val)
   NodePTR x = new Node;
   x->value = val;
 
-  if (m_Head == NULL || val <= m_Head->value) // add before head
+  if (m_Head == nullptr || val <= m_Head->value) // add before head
   {
-    x->prev = NULL;
+    x->prev = nullptr;
     x->next = m_Head;
-    if (m_Head != NULL)
+    if (m_Head != nullptr)
       m_Head->prev = x;
     m_Head = x;
   }
   else  // insert at the correct position after head
   {
     NodePTR t = m_Head;
-    while ((t->next != NULL) && (t->next->value <= val))
+    while ((t->next != nullptr) && (t->next->value <= val))
       t = t->next;
 
     x->next = t->next;
     x->prev = t;
     t->next = x;
-    if (x->next != NULL)
+    if (x->next != nullptr)
       x->next->prev = x;
   }
 }
@@ -135,7 +135,7 @@ int DoublyLinkedList::getSize()
 {
   int i = 0;
   NodePTR x = m_Head;
-  while (x != NULL)
+  while (x != nullptr)
   {
     x = x->next;
     i++;
@@ -146,19 +146,19 @@ int DoublyLinkedList::getSize()
 
 bool DoublyLinkedList::isSorted()
 {
-  if (m_Head == NULL)
+  if (m_Head == nullptr)
     return true;
   else
   {
     NodePTR a = m_Head;
     NodePTR b = m_Head->next;
-    while (b != NULL && b->value >= a->value)
+    while (b != nullptr && b->value >= a->value)
     {
       a = a->next;
       b = b->next;
     }
 
-    if (b == NULL)
+    if (b == nullptr)
       return true;
     else
       return false;
