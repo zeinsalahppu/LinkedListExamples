@@ -166,7 +166,7 @@ bool DoublyLinkedList::isSorted()
 }
 
 
-void main()
+int main()
 {
   cout << "Hello! This is an example program for studying linked lists" << endl;
   DoublyLinkedList list;
