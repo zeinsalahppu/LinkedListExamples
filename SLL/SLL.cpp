@@ -192,6 +192,5 @@ int main()
   cout << "\n" << list2.getSize() << "\n";
   cout << "Sorted: " << list2.isSorted() << "\n";
   
-  system("PAUSE");
 }
 
