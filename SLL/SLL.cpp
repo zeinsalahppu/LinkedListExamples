@@ -184,6 +184,5 @@ int main()
 
 
   
-  system("PAUSE");
 }
 
